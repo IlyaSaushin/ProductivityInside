@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ProductivityInside</string>
+    <string name="city">City</string>
+    <string name="continent_ru">Континент: %s</string>
+    <string name="county_ru">Страна: %s</string>
+    <string name="region_ru">Регион: %s</string>
+    <string name="weather_ru">Погода:</string>
+    <string name="temperature_ru">Температура: %s</string>
+    <string name="pressure_ru">Давление: %s</string>
+    <string name="language_ru">Язык:</string>
+    <string name="last_update_time_ru">Последнее обновление: %s</string>
+    <string name="place_info_ru">Информация о местоположении:</string>
+    <string-array name="servers_name_spinner_en">
+        <item>Server 1</item>
+        <item>Server 2</item>
+        <item>Server 3</item>
+    </string-array>
+</resources>

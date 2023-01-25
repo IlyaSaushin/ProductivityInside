@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.MainActivity"
+    android:background="@drawable/main_activity_background">
+
+    <Spinner
+        android:id="@+id/server_spinner"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/spinner_background"
+        />
+
+    <TextView
+        android:id="@+id/last_update_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/last_update_time_ru"
+        android:fontFamily="@font/ontesserat_regular"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/server_spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        />
+
+    <ImageView
+        android:id="@+id/update_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/server_spinner"
+        app:layout_constraintBottom_toBottomOf="@id/server_spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/update_icon"
+        />
+
+    <TextView
+        android:id="@+id/city_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/city"
+        android:fontFamily="@font/ontesserat_regular"
+        android:textSize="22sp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/last_update_time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"
+        />
+
+    <TextView
+        android:id="@+id/place_info"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/place_info_ru"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/ontesserat_regular"
+        app:layout_constraintTop_toBottomOf="@id/city_title"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="@id/continent"
+        />
+
+    <TextView
+        android:id="@+id/continent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/continent_ru"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/ontesserat_regular"
+        app:layout_constraintTop_toBottomOf="@id/place_info"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        />
+
+    <TextView
+        android:id="@+id/county"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/county_ru"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/ontesserat_regular"
+        app:layout_constraintTop_toBottomOf="@id/continent"
+        app:layout_constraintStart_toStartOf="@id/continent"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/region"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/region_ru"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/ontesserat_regular"
+        app:layout_constraintTop_toBottomOf="@id/county"
+        app:layout_constraintStart_toStartOf="@id/county"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/weather_ru"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/region"
+        app:layout_constraintStart_toStartOf="@id/region"
+        android:layout_marginTop="60dp"
+        />
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/temperature_ru"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/ontesserat_regular"
+        app:layout_constraintTop_toBottomOf="@id/weather"
+        app:layout_constraintStart_toStartOf="@id/weather"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/pressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pressure_ru"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/ontesserat_regular"
+        app:layout_constraintTop_toBottomOf="@id/temperature"
+        app:layout_constraintStart_toStartOf="@id/temperature"
+        android:layout_marginTop="20dp"
+        />
+
+    <ImageView
+        android:id="@+id/weather_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/weather"
+        app:layout_constraintBottom_toBottomOf="@id/pressure"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="40dp"
+        android:src="@drawable/ic_rainy"
+        />
+
+    <TextView
+        android:id="@+id/language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/language_ru"
+        android:textSize="22sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/ontesserat_regular"
+        app:layout_constraintTop_toBottomOf="@id/pressure"
+        app:layout_constraintStart_toStartOf="@id/pressure"
+        android:layout_marginTop="80dp"
+        />
+
+    <ImageView
+        android:id="@+id/usa_lang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/language"
+        app:layout_constraintStart_toEndOf="@id/language"
+        android:src="@drawable/usa_icon"
+        android:layout_marginStart="30dp"
+        />
+
+    <ImageView
+        android:id="@+id/ru_lang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/russia"
+        app:layout_constraintTop_toTopOf="@id/usa_lang"
+        app:layout_constraintStart_toEndOf="@id/usa_lang"
+        android:layout_marginStart="30dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
