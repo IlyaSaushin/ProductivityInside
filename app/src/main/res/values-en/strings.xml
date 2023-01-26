@@ -6,11 +6,14 @@
     <string name="county">Country: %s</string>
     <string name="region">Region: %s</string>
     <string name="weather">Weather:</string>
-    <string name="temperature">Temperature: %s</string>
-    <string name="pressure">Pressure: %s</string>
+    <string name="temperature">Temperature: %s °C</string>
+    <string name="pressure">Pressure: %s mm Hg</string>
     <string name="language">Language:</string>
     <string name="last_update_time">Last update: %s</string>
     <string name="place_info">Location information:</string>
+    <string name="serverOne">Server 1</string>
+    <string name="serverTwo">Server 2</string>
+    <string name="serverThree">Server 3</string>
     <string-array name="servers_name_spinner">
         <item>Server 1</item>
         <item>Server 2</item>

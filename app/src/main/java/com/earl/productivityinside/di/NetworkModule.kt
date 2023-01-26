@@ -36,6 +36,5 @@ class NetworkModule {
 
     companion object {
         private const val BASE_URL = "http://ipwho.is/"
-//        private const val BASE_URL = "http://ip-api.com/"
     }
 }

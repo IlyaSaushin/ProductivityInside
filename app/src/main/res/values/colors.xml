@@ -10,4 +10,5 @@
     <color name="custom_white">#90FFFFFF</color>
     <color name="main_screen_gradient_end_color">#175298</color>
     <color name="main_screen_gradient_start_color">#38495E</color>
+    <color name="custom_transparent">#80FFFFFF</color>
 </resources>

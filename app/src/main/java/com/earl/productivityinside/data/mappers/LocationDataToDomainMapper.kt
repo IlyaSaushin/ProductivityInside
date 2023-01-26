@@ -6,6 +6,8 @@ interface LocationDataToDomainMapper <T> {
         continent: String,
         country: String,
         region: String,
-        city: String
+        city: String,
+        latitude: Double ,
+        longitude: Double
     ) : T
 }
