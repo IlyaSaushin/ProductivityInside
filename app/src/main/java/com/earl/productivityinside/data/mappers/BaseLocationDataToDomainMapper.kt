@@ -9,6 +9,8 @@ class BaseLocationDataToDomainMapper @Inject constructor() : LocationDataToDomai
         continent: String,
         country: String,
         region: String,
-        city: String
-    ) = LocationInfoDomain.Base(continent, country, region, city)
+        city: String,
+        latitude: Double ,
+        longitude: Double
+    ) = LocationInfoDomain.Base(continent, country, region, city, latitude, longitude)
 }

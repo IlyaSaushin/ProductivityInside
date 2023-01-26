@@ -6,11 +6,15 @@
     <string name="county">Страна: %s</string>
     <string name="region">Регион: %s</string>
     <string name="weather">Погода:</string>
-    <string name="temperature">Температура: %s</string>
-    <string name="pressure">Давление: %s</string>
+    <string name="temperature">Температура: %s °C</string>
+    <string name="pressure">Давление: %s мм.рт.ст</string>
     <string name="language">Язык:</string>
     <string name="last_update_time">Последнее обновление: %s</string>
     <string name="place_info">Информация о местоположении:</string>
+    <string name="serverOne">Сервер 1</string>
+    <string name="serverTwo">Сервер 2</string>
+    <string name="serverThree">Сервер 3</string>
+    <string name="example_appwidget_description">Widget</string>
     <string-array name="servers_name_spinner">
         <item>Сервер 1</item>
         <item>Сервер 2</item>

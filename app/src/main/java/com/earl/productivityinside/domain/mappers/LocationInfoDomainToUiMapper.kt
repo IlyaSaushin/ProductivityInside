@@ -1,6 +1,6 @@
-package com.earl.productivityinside.data.mappers
+package com.earl.productivityinside.domain.mappers
 
-interface LocationInfoRemoteToDataMapper<T> {
+interface LocationInfoDomainToUiMapper<T> {
 
     fun map(
         continent: String,

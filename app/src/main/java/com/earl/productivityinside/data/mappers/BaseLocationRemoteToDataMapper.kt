@@ -9,8 +9,10 @@ class BaseLocationRemoteToDataMapper @Inject constructor() : LocationInfoRemoteT
         continent: String,
         country: String,
         region: String,
-        city: String
+        city: String,
+        latitude: Double ,
+        longitude: Double
     ) = LocationInfoData.Base(
-        continent, country, region, city
+        continent, country, region, city, latitude, longitude
     )
 }
