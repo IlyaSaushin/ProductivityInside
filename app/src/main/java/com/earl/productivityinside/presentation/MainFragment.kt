@@ -127,6 +127,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), UpdateTimeListener {
                     navigator.hideProgressBar()
                 }
                 updateWidget()
+
             }.collect()
         }
     }
