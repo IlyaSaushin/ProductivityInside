@@ -1,4 +1,4 @@
-package com.earl.productivityinside
+package com.earl.productivityinside.presentation
 
 import android.appwidget.AppWidgetProvider
 

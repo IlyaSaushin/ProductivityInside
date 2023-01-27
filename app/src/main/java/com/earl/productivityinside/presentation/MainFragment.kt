@@ -2,13 +2,11 @@ package com.earl.productivityinside.presentation
 
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
-import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +18,6 @@ import androidx.core.os.ConfigurationCompat
 import androidx.lifecycle.lifecycleScope
 import com.earl.productivityinside.App
 import com.earl.productivityinside.R
-import com.earl.productivityinside.Widget
 import com.earl.productivityinside.databinding.FragmentMainBinding
 import com.earl.productivityinside.presentation.LocaleHelper.setLocale
 import kotlinx.coroutines.Dispatchers
@@ -66,18 +63,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), UpdateTimeListener {
         spinner.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 when (parent?.selectedItem) {
-                    context.resources.getString(R.string.serverOne) -> {
-                        currentServer = SERVER_ONE
-//                        update()
-                    }
-                    context.resources.getString(R.string.serverTwo) ->  {
-                        currentServer = SERVER_TWO
-//                        update()
-                    }
-                    context.resources.getString(R.string.serverThree) -> {
-                        currentServer = SERVER_THREE
-
-                    }
+                    context.resources.getString(R.string.serverOne) -> currentServer = SERVER_ONE
+                    context.resources.getString(R.string.serverTwo) -> currentServer = SERVER_TWO
+                    context.resources.getString(R.string.serverThree) -> currentServer = SERVER_THREE
                 }
                 update()
             }
@@ -166,26 +154,22 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), UpdateTimeListener {
     }
 
     private fun updateWidget() {
-        val newIntent = Intent(requireContext(), Widget::class.java)
-        newIntent.action = "android.appwidget.action.APPWIDGET_UPDATE"
         val newIds = AppWidgetManager.getInstance(requireActivity().application).getAppWidgetIds(
             ComponentName(
                 requireActivity().application,
                 Widget::class.java
             )
         )
-        val appWidgetManager = AppWidgetManager.getInstance(context)
-        val remoteViews = RemoteViews(context?.packageName, R.layout.widget).also {
-            it.setTextViewText(R.id.city_widget, binding.cityTitle.text.toString())
-            Log.d("tag", "updateWidget: city ${binding.cityTitle.text.toString()}")
-            it.setTextViewText(R.id.temperature_widget, binding.temperature.text.toString())
-            Log.d("tag", "updateWidget: temp ${binding.temperature.text.toString()}")
-            it.setTextViewText(R.id.last_update_time_widget, binding.lastUpdateTime.text.toString())
-            Log.d("tag", "updateWidget: update ${binding.lastUpdateTime.text.toString()}")
-            it.setImageViewBitmap(R.id.weather_image_widget, drawableToBitmap(binding.weatherImage.drawable))
+        if (newIds.isNotEmpty()) {
+            val appWidgetManager = AppWidgetManager.getInstance(context)
+            val remoteViews = RemoteViews(context?.packageName, R.layout.widget).also {
+                it.setTextViewText(R.id.city_widget, binding.cityTitle.text.toString())
+                it.setTextViewText(R.id.temperature_widget, binding.temperature.text.toString())
+                it.setTextViewText(R.id.last_update_time_widget, binding.lastUpdateTime.text.toString())
+                it.setImageViewBitmap(R.id.weather_image_widget, drawableToBitmap(binding.weatherImage.drawable))
+            }
+            appWidgetManager.updateAppWidget(newIds[0], remoteViews)
         }
-        requireActivity().sendBroadcast(newIntent)
-        appWidgetManager.updateAppWidget(newIds[0], remoteViews)
     }
 
     private fun drawableToBitmap(drawable: Drawable): Bitmap? {
