@@ -2,9 +2,7 @@ package com.earl.productivityinside.data.models.remote
 
 import com.earl.productivityinside.data.mappers.LocationInfoRemoteToDataMapper
 import com.earl.productivityinside.data.models.LocationInfoData
-import kotlinx.serialization.Serializable
 
-@Serializable
 data class LocationInfoRemote(
     val continent: String,
     val country: String,

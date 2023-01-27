@@ -29,7 +29,6 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 class MainFragment : BaseFragment<FragmentMainBinding>(), UpdateTimeListener {
 
     @Inject lateinit var viewModel: MainFragmentViewModel
@@ -121,6 +120,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), UpdateTimeListener {
                         binding.cityTitle
                     )
                 }
+                updateWidget()
             }.collect()
         }
     }
@@ -138,6 +138,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), UpdateTimeListener {
                     )
                     navigator.hideProgressBar()
                 }
+                updateWidget()
             }.collect()
         }
     }
@@ -183,6 +184,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), UpdateTimeListener {
             Log.d("tag", "updateWidget: update ${binding.lastUpdateTime.text.toString()}")
             it.setImageViewBitmap(R.id.weather_image_widget, drawableToBitmap(binding.weatherImage.drawable))
         }
+        requireActivity().sendBroadcast(newIntent)
         appWidgetManager.updateAppWidget(newIds[0], remoteViews)
     }
 
