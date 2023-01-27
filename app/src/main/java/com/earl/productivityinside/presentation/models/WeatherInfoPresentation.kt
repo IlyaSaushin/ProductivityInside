@@ -24,9 +24,18 @@ interface WeatherInfoPresentation {
             tempTextView.text = localeContext.resources.getString(R.string.temperature, temperature)
             pressureTextView.text = localeContext.resources.getString(R.string.pressure, pressure)
             when(weatherIcon) {
-                CLOUDY -> icon.setImageResource(R.drawable.ic_cloudy)
-                RAINY -> icon.setImageResource(R.drawable.ic_rainy)
-                SUNNY -> icon.setImageResource(R.drawable.ic_sunny)
+                CLOUDY -> {
+                    icon.setImageResource(R.drawable.ic_cloudy)
+                    icon.tag = R.drawable.ic_cloudy
+                }
+                RAINY -> {
+                    icon.setImageResource(R.drawable.ic_rainy)
+                    icon.tag = R.drawable.ic_rainy
+                }
+                SUNNY -> {
+                    icon.setImageResource(R.drawable.ic_sunny)
+                    icon.tag = R.drawable.ic_sunny
+                }
             }
         }
     }

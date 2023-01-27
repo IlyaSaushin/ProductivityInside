@@ -32,7 +32,7 @@ interface Service {
         @Header("Authorization") appToken: String,
         @Query("lat") latitude: Double,
         @Query("lng") longitude: Double,
-        @Query("params", encoded = true) temp: List<String>,
+        @Query("params", encoded = true) temp: String,
     ) : ResponseBody
 
     // https://yandex.com/dev/weather/

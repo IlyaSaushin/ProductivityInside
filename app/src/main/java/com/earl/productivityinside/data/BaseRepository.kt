@@ -1,12 +1,12 @@
 package com.earl.productivityinside.data
 
-import android.util.Log
 import com.earl.productivityinside.data.mappers.LocationDataToDomainMapper
 import com.earl.productivityinside.data.mappers.LocationInfoRemoteToDataMapper
 import com.earl.productivityinside.data.mappers.WeatherInfoDataToDomainMapper
 import com.earl.productivityinside.data.mappers.WeatherInfoRemoteToDataMapper
 import com.earl.productivityinside.data.models.LocationInfoData
 import com.earl.productivityinside.data.models.WeatherInfoData
+import com.earl.productivityinside.data.retrofit.NetworkService
 import com.earl.productivityinside.data.retrofit.Service
 import com.earl.productivityinside.domain.Repository
 import com.earl.productivityinside.domain.models.LocationInfoDomain
@@ -30,62 +30,55 @@ class BaseRepository @Inject constructor(
             ?.mapToDomain(locationDataToDomainMapper)
     } catch (e: Exception) {
         e.printStackTrace()
-        Log.d("tag", "fetchLocationByIp: $e")
         null
     }
 
     override suspend fun fetchWeatherFromServerOne(lat: Double, long: Double) = try {
         val response = service.fetchWeatherFromServerOne(
-            "https://api.openweathermap.org/data/2.5/weather",
+            NetworkService.SERVER_ONE,
             lat,
             long,
-            "fd8a9b5c5f69bcfc4b2d0c8057ab48ef",
-            "metric"
+            NetworkService.EndPoints.ServerOneToken.url,
+            NetworkService.EndPoints.ServerOneMetrics.url
         ).string()
-        Log.d("tag", "fetchWeatherFromServerOne: $response")
         jsonParseHelper.parseJsonToWeatherInfoFromServerOne(response)
             ?.mapToData(weatherInfoRemoteToDataMapper)
             ?.mapToDomain(weatherInfoDataToDomainMapper)
     } catch (e: Exception) {
         e.printStackTrace()
-        Log.d("tag", "fetchWeatherFromServerOne: $e")
         null
     }
 
 
     override suspend fun fetchWeatherFromServerTwo(lat: Double, long: Double) = try {
         val response = service.fetchWeatherFromServerTwo(
-            "https://api.stormglass.io/v2/weather/point",
-            "9863d92c-9d58-11ed-b59d-0242ac130002-9863d9f4-9d58-11ed-b59d-0242ac130002",
+            NetworkService.SERVER_TWO,
+            NetworkService.EndPoints.ServerTwoToken.url,
             lat,
             long,
-            listOf("airTemperature", "pressure"),
+            NetworkService.EndPoints.ServerTwoParams.url,
         ).string()
-        Log.d("tag", "fetchWeatherFromServerTwo: $response")
         jsonParseHelper.parseJsonToWeatherInfoFromServerTwo(response)
             ?.mapToData(weatherInfoRemoteToDataMapper)
             ?.mapToDomain(weatherInfoDataToDomainMapper)
     } catch (e: Exception) {
         e.printStackTrace()
-        Log.d("tag", "fetchWeatherFromServerTwo: $e")
         null
     }
 
 
     override suspend fun fetchWeatherFromServerThree(lat: Double, long: Double) = try {
         val response = service.fetchWeatherFromServerThree(
-            "https://api.weather.yandex.ru/v2/forecast/",
-            "ecdb281a-7451-49ba-b415-c35b511ec6df",
+            NetworkService.SERVER_THREE,
+            NetworkService.EndPoints.ServerThreeToken.url,
             lat,
             long
         ).string()
-        Log.d("tag", "fetchWeatherFromServerThree: $response")
         jsonParseHelper.parseJsonToWeatherInfoFromServerThree(response)
             ?.mapToData(weatherInfoRemoteToDataMapper)
             ?.mapToDomain(weatherInfoDataToDomainMapper)
     } catch (e: Exception) {
         e.printStackTrace()
-        Log.d("tag", "fetchWeatherFromServerThree: $e")
         null
     }
 
