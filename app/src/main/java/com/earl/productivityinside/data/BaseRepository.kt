@@ -54,12 +54,14 @@ class BaseRepository @Inject constructor(
 
 
     override suspend fun fetchWeatherFromServerTwo(lat: Double, long: Double) = try {
+        val params = listOf("airTemperature", "pressure")
+        val readyParams = params.joinToString(",")
         val response = service.fetchWeatherFromServerTwo(
             "https://api.stormglass.io/v2/weather/point",
             "9863d92c-9d58-11ed-b59d-0242ac130002-9863d9f4-9d58-11ed-b59d-0242ac130002",
             lat,
             long,
-            listOf("airTemperature", "pressure"),
+            readyParams,
         ).string()
         Log.d("tag", "fetchWeatherFromServerTwo: $response")
         jsonParseHelper.parseJsonToWeatherInfoFromServerTwo(response)

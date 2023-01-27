@@ -54,18 +54,19 @@ interface JsonParseHelper {
 
         override fun parseJsonToWeatherInfoFromServerTwo(json: String): WeatherInfoRemote? {
             val jsonObject = JSONObject(json)
-            val usefulObject = jsonObject.getJSONArray(JSON_OBJECT_SERVER_TWO).getJSONObject(0)
-                .getJSONObject(WEATHER_OBJECT_SERVER_TWO)
-            return if (jsonObject != null) {
-                val icon = when(jsonObject.getString(ICON_SERVER_TWO)) {
+            val hours = jsonObject.getJSONArray(JSON_OBJECT_SERVER_TWO).getJSONObject(0)
+            val airTemperature = hours.getJSONObject(WEATHER_OBJECT_SERVER_TWO)
+            val pressure = hours.getJSONObject(PRESSURE_OBJECT_SERVER_TWO)
+            return if (hours != null) {
+                val icon = when(airTemperature.getString(TEMPERATURE_SERVER_TWO)) {
                     "Clouds" -> "cloudy"
                     "Rain" -> "rainy"
                     "Sun" -> "sunny"
                     else -> "sunny"
                 }
                 WeatherInfoRemote(
-                    jsonObject.getString(TEMPERATURE_SERVER_TWO),
-                    jsonObject.getString(PRESSURE_SERVER_TWO),
+                    airTemperature.getString(TEMPERATURE_SERVER_TWO),
+                    pressure.getString(PRESSURE_SERVER_TWO),
                     icon
                 )
             } else null
@@ -107,9 +108,10 @@ interface JsonParseHelper {
         private const val ICON_SERVER_ONE = "main"
         private const val JSON_OBJECT_SERVER_TWO = "hours"
         private const val WEATHER_OBJECT_SERVER_TWO = "airTemperature"
+        private const val PRESSURE_OBJECT_SERVER_TWO = "pressure"
         private const val TEMPERATURE_SERVER_TWO = "noaa"
-        private const val PRESSURE_SERVER_TWO = "sg"
-        private const val ICON_SERVER_TWO = "pressure"
+        private const val PRESSURE_SERVER_TWO = "noaa"
+        private const val ICON_SERVER_TWO = "noaa"
         private const val FACT_OBJECT_SERVER_THREE = "fact"
         private const val TEMPERATURE_SERVER_THREE = "temp"
         private const val PRESSURE_SERVER_THREE = "pressure_mm"
